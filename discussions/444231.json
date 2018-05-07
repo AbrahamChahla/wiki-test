@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1045810",
+    "ThreadId": "444231",
+    "Html": "It's been driving me batty. ColumnMapping from a Lightswitch app works as advertised with plaintext, date, image, and richtext contentcontrols ... but not with Word checkbox content controls. The data is a True/False boolean data type (have also tried  1/2 yes/no, etc) but all throw an error (&quot;You are not allowed to edit this selection because it is protected&quot;) that implies a protected control but the control and the document are absolutely unprotected. \r<br />\n<br />\nGiven that tumbleweeds often roll through these forums, I'm likely hoping against hope that I'll get an answer, but it's gotta be worth a try. :)<br />\n",
+    "PostedDate": "2013-05-19T17:58:33.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1061165",
+    "ThreadId": "444231",
+    "Html": "Still looking for an answer ...<br />\n",
+    "PostedDate": "2013-06-25T19:02:07.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1068278",
+    "ThreadId": "444231",
+    "Html": "Any luck with this? I have just gotten to the stage where I need to tackle this exact problem.<br />\n",
+    "PostedDate": "2013-07-15T02:12:16.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1068326",
+    "ThreadId": "444231",
+    "Html": "<strong>AlexF1980 wrote:</strong><br />\n<blockquote>\nAny luck with this? I have just gotten to the stage where I need to tackle this exact problem.<br />\n</blockquote>\nHere's a solution that works for me:<br />\n<pre><code>dynamic _word = AutomationFactory.GetObject(&quot;Word.Application&quot;);\n            var _doc = _word.ActiveDocument;\n            //checkboxes:\n            if (this.DandDProperty.ProtoTypeProduced == true)\n            {\n                dynamic ccs = _doc.SelectContentControlsByTitle(&quot;PrototypeProducedYes&quot;);\n                if (ccs != null)\n                {\n                    dynamic cc = ccs[1];\n                    cc.Checked = true;\n                }\n            }\n            else\n            {\n                dynamic ccs = _doc.SelectContentControlsByTitle(&quot;PrototypeProducedNo&quot;);\n                if (ccs != null)\n                {\n                    dynamic cc = ccs[1];\n                    cc.Checked = true;\n                }\n            }</code></pre>\n\n:-)<br />\n",
+    "PostedDate": "2013-07-15T04:22:28.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1069220",
+    "ThreadId": "444231",
+    "Html": "Hi Alex,\r<br />\n<br />\nThanks for posting a helpful solution to the problem. I wound up using a similar approach once it became obvious that the OIP didn't work with checkbox controls as expected. Hope that someone will resolve this in a future release. Thought of digging into the OIP source code to implement this but quickly realized that it's over my head.<br />\n",
+    "PostedDate": "2013-07-16T14:25:58.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

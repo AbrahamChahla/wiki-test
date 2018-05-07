@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1206878",
+    "ThreadId": "531346",
+    "Html": "Hello,\r<br />\n<br />\ni try to use one Excel File for the Import in two Tables in Lightswitch using c#. I've try something like this:<br />\n<pre><code>            var mappingDetail = new List&lt;OfficeIntegration.ColumnMapping&gt;();\n            mappingDetail.Add(new ColumnMapping(&quot;Product&quot;, &quot;TestHead&quot;));\n          \n            var mapping = new List&lt;OfficeIntegration.ColumnMapping&gt;();\n            mapping.Add(new ColumnMapping(&quot;Nebenordnungen&quot;, &quot;Nebenordnungen&quot;));\n\n            OfficeIntegration.Excel.Import(this.TestDetailsSet, mappingDetail &amp;    this.TestImportTempSet, mapping);</code></pre>\n\nBut i can't find a solution to this. I've also try the ExcelImporter (VB). \r<br />\nMaybe you Guys can help me. \r<br />\n<br />\nGreetz\r<br />\nhani00<br />\n",
+    "PostedDate": "2014-02-11T08:54:47.467-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

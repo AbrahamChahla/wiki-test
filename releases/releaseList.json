@@ -1,0 +1,91 @@
+[
+  {
+    "Id": "0",
+    "Name": "Office Integration Pack 1.03",
+    "DevelopmentStatus": "Beta",
+    "Description": "Version 1.03 adds a couple of new capabilities including:\n* Support for exporting images to Word content controls and tables\n* The ability to import all data from Sheet1 with a column mapping, without specifying a range or worksheet.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2012-07-17T13:13:26.423-07:00",
+    "Files": [
+      {
+        "Id": "aeec00a1-7692-49dc-a403-5f1b04dd6dc3",
+        "FileName": "OfficeIntegration.vsix",
+        "Url": "./0/aeec00a1-7692-49dc-a403-5f1b04dd6dc3",
+        "Type": "Application",
+        "UploadDate": "2012-07-02T13:29:37.117-07:00"
+      },
+      {
+        "Id": "61fab588-a9f9-492c-911b-1bd833e6ab81",
+        "FileName": "Sample Application VS2010 CS.zip",
+        "Url": "./0/61fab588-a9f9-492c-911b-1bd833e6ab81",
+        "Type": "Example",
+        "UploadDate": "2012-07-02T13:29:37.18-07:00"
+      },
+      {
+        "Id": "8033db77-3bb4-47f3-9c3e-9f8ba21cf6af",
+        "FileName": "Sample Application VS2010 VB.zip",
+        "Url": "./0/8033db77-3bb4-47f3-9c3e-9f8ba21cf6af",
+        "Type": "Example",
+        "UploadDate": "2012-07-02T13:29:37.303-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "1",
+    "Name": "Office Integration Pack 1.02",
+    "DevelopmentStatus": "Beta",
+    "Description": "Version 1.02 provides developers with more flexibility by supporting generic IEnumerable collections in Export functions.\n\nIn addition, you can now provide literal values and entity properties in ColumnMaps when exporting to Word content controls using the GenerateDocument function.\n\nFinally, lambda functions are supported in ColumnMapping so that values can be formatted as they are exported.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2012-05-14T12:23:42.143-07:00",
+    "Files": [
+      {
+        "Id": "7c8143dc-dd99-435c-a153-fcc2533ca2bb",
+        "FileName": "OfficeIntegration.vsix",
+        "Url": "./1/7c8143dc-dd99-435c-a153-fcc2533ca2bb",
+        "Type": "Application",
+        "UploadDate": "2012-05-10T11:45:05.867-07:00"
+      },
+      {
+        "Id": "c7a3873b-514c-4031-975a-dcd68eefee7d",
+        "FileName": "BookStoreApplication.zip",
+        "Url": "./1/c7a3873b-514c-4031-975a-dcd68eefee7d",
+        "Type": "Example",
+        "UploadDate": "2012-05-14T12:23:42.047-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "2",
+    "Name": "Office Integration Pack 1.01",
+    "DevelopmentStatus": "Beta",
+    "Description": "The initial CodePlex release of the Office Integration Pack for LightSwitch consisting of version 1.00 plus a minor feature addition that enables developers to specify one or more recipients on the CC line of an email. Additionally, you can now specify one or more recipients on the TO line.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2012-03-15T12:32:18.46-07:00",
+    "Files": [
+      {
+        "Id": "73c55ca0-4c5c-4e19-9aa6-b348d98d6573",
+        "FileName": "OfficeIntegration.vsix",
+        "Url": "./2/73c55ca0-4c5c-4e19-9aa6-b348d98d6573",
+        "Type": "Application",
+        "UploadDate": "2012-03-15T12:32:16.087-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "3",
+    "Name": "Office Integration Pack 1.10",
+    "DevelopmentStatus": "Beta",
+    "Description": "Compatible with Visual Studio 2013.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2014-08-28T06:25:07.637-07:00",
+    "Files": [
+      {
+        "Id": "ca4d04ca-3db3-4600-8ada-86d9a7355c69",
+        "FileName": "OfficeIntegration.vsix",
+        "Url": "./3/ca4d04ca-3db3-4600-8ada-86d9a7355c69",
+        "Type": "Application",
+        "UploadDate": "2014-08-28T06:25:07.433-07:00"
+      }
+    ]
+  }
+]

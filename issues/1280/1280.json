@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The extension takes forever to Export a large table to Excel.  SQL Server transfers the data to the client within a few seconds, but the app sits processing for up to 20 or 30 minutes sometimes before Excel will pop up with the data.\nDuring this time, the EXCEL.EXE process is started and using CPU time.\nI gather the extension iterates through every field individually and inserts cells one at a time - is this what's making it slow?\n\nAlso, the EXCEL.EXE process does not close, even when the document it's viewing is closed... is the COM object still being referenced by the extension, perhaps, even when it's done with it?  This can lead to a number of \"ghost\" EXCEL.EXE processes if you've exported a lot of files.\n\n(The last issue there can be resolved by setting the resulting object from the Export() function to null, then calling a GC.WaitForPendingFinalizers() followed by a GC.Collect())",
+    "LastUpdatedDate": "2013-02-14T13:22:21.417-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "officeintegration",
+    "ReportedDate": "2012-10-24T07:46:05.51-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Extension takes forever to export large table as Excel",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1280
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

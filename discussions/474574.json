@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1137679",
+    "ThreadId": "474574",
+    "Html": "Judging from the forum, it looks like Im unlikely to get an answer here, but its worth a shot. \r<br />\n<br />\nExcel Import works great, except for one thing. As far as I can tell, you can only import new information. There doesnt seem to be a way to actually update existing entries. Rather, it always imports all rows as if they are new, creating duplicates.  It would be helpful if we could set a cell as a Primary key. If that key exists already then update changes in values. If it doesnt exist, create new rows/entries. <br />\n",
+    "PostedDate": "2013-12-18T10:36:53.927-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1242870",
+    "ThreadId": "474574",
+    "Html": "I'd also like to see this.  basically and import/update operation.<br />\n",
+    "PostedDate": "2014-05-07T21:54:51.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

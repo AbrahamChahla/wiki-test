@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "1089521",
+    "ThreadId": "455896",
+    "Html": "Hey Guys,\r<br />\n<br />\nJust wondering can i use this pack with VS 2013 preview.  if not what are the alternatives?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-09-07T01:40:08.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1108502",
+    "ThreadId": "455896",
+    "Html": "With some tricks you can run it in VS 2013 <a href=\"http://ge.tt/71iuRQv/v/0\" rel=\"nofollow\">http://ge.tt/71iuRQv/v/0</a> , hope this works for you :)<br />\n",
+    "PostedDate": "2013-10-16T13:15:51.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1109114",
+    "ThreadId": "455896",
+    "Html": "Thanks, I will give it a try and let you know<br />\n",
+    "PostedDate": "2013-10-18T02:30:55.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1199797",
+    "ThreadId": "455896",
+    "Html": "What I did was downloaded the source code, imported the solution in VS 2013, tweaked it, compiled it and installed the VSIX.  It's working fine for me now.<br />\n",
+    "PostedDate": "2014-01-28T05:15:20.973-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1200292",
+    "ThreadId": "455896",
+    "Html": "Can you share it with us, would love to give it a try!<br />\n",
+    "PostedDate": "2014-01-28T22:14:47.183-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1221464",
+    "ThreadId": "455896",
+    "Html": "<strong>seanrobertwright wrote:</strong><br />\n<blockquote>\nWhat I did was downloaded the source code, imported the solution in VS 2013, tweaked it, compiled it and installed the VSIX.  It's working fine for me now.<br />\n</blockquote>\nHi SeanRobert,\r<br />\n<br />\nWhen I open the source code in VS 2013 and rebuild, I initially get 115 errors. Is that what you mean by 'tweaked it' or did I miss a step? Would you just share the resulting VSIX or tweaked source code or elaborate just a bit on the tweaking part? Thanks.<br />\n",
+    "PostedDate": "2014-03-11T08:01:27.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1289441",
+    "ThreadId": "455896",
+    "Html": "I cannot get this to install in VS 2013 , and seems like all other Lightswitch extension developers, GridLogic has quit supporting the project, I was able to get the 1.1 to install no problem, but the edit to the manifest to make it work in 2013 does not work.  Any other suggestions on getting this to work with VS 2013 ..\r<br />\n<br />\nwould be great ..\r<br />\nthanks.\r<br />\nD<br />\n",
+    "PostedDate": "2014-08-12T13:24:59.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1289862",
+    "ThreadId": "455896",
+    "Html": "It is unfortunate this extension is no longer supported/updated.<br />\n<br />\nTo compile this yourself for Visual Studio 2013:<br />\n<br />\nDownload and extract source.<br />\n<br />\nBe sure to have the following installed:<br />\n-Microsoft Visual Studio 2013 SDK<br />\n-LightSwitch Extensibility Toolkit for Visual Studio 2013 (be sure to manually copy Microsoft.LightSwitch.Toolkit.targets file to appropriate MSBuild folder)<br />\n<br />\nLaunch VS2013. Be sure all VS updates are applied. Open solution and upgrade project. <br />\n<br />\nUpdate References for each project (in Properties) to LightSwitch, Silverlight 5 and .NET 4.5 (or whatever your project needs). Build one at a time until no errors appear saving OfficeIntegration.Vsix for the last. <br />\nSome references may be unused and can be removed.<br />\nAlso edit manifest file to include v12. Build solution.<br />\n<br />\nOnce compiled, VSIX file will be located: officeintegration-16811\\OfficeIntegration\\OfficeIntegration\\OfficeIntegration.Vsix\\bin\\Release\\OfficeIntegration.vsix<br />\n<br />\nInstall the extension (double-click on VSIX file) and test your project. Adjust references in project to match VSIX<br />\n<br />\nMake other changes as needed.<br />\n<br />\nI uploaded the updated source files and compiled VSIX file to source patches, but it is pending approval<br />\n<a href=\"http://officeintegration.codeplex.com/SourceControl/list/patches\" rel=\"nofollow\">http://officeintegration.codeplex.com/SourceControl/list/patches</a><br />\n<br />\nBest of luck<br />\n",
+    "PostedDate": "2014-08-13T20:51:13.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

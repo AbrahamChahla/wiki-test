@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I need to control the import of data from Excel such that Excel.Import() method returns a list of in memory POCO/objects of my choice (definition) which then I can filter and transfer them to a table avoiding any duplicates in the existing table.\nBy using reflection and ColumnMapping one can develop such a method to return in memory objects and not being tied up to a Lightswitch table ( IValueCollection).\nSee also my comment in this discussion: [Excel.Import() discussion](http://officeintegration.codeplex.com/discussions/544663)",
+    "LastUpdatedDate": "2014-05-28T00:48:40.277-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "officeintegration",
+    "ReportedDate": "2014-05-28T00:48:40.277-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Add an Excel.Import() method to return POCO objects",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 1788
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

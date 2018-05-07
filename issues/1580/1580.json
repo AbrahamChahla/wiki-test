@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "hi, first of all you extension is really great. i am starting with lightswitch and its perfect for reporting.\n\ni have the problem that not all of the data i want to map into the word is in one table.\n\nexample\na have a table with name and adress\nand another table with country.\n\nhow can i export all this data. generate document can only take one table",
+    "LastUpdatedDate": "2013-04-23T15:02:56.307-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "officeintegration",
+    "ReportedDate": "2013-04-23T15:02:56.307-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "GenerateDocument with more tables",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1580
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

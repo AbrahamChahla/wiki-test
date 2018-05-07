@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1242873",
+    "ThreadId": "544663",
+    "Html": "I'm looking for a way to filter the excel import.  I'm trying to simplify this for users, they have exported excel sheets from another app that need imported.  The file has a number of blank lines at the end that the imported brings in as nulls.  Sometimes the data is only a few lines but then after the import there are 500 null lines.\r<br />\n<br />\ni've tried importing the sheet, then iterating through the data removing the nulls, but the importer  runs concurrently so:\r<br />\n<br />\nexcel.import(me.table1, map) \r<br />\nfunction_loop_and_delete_nulls\r<br />\n<br />\nruns the function before the datagrid is populated, so it basically does nothing.\r<br />\n<br />\nThe other annoyance is that it takes a long time to load 1000 null rows into the datagrid.\r<br />\n<br />\nthirdly, because of the concurrent running, I can't trigger a save, or the function, a refresh, anything to happen after the excel import.<br />\n\r<br />\n<br />\nI would also add that there is often duplicate data, it would be handy if the importer could handle this.  I'm handling it in t-sql though so I can live for the moment.\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2014-05-07T22:01:30.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1250328",
+    "ThreadId": "544663",
+    "Html": "Actually, the Excel.Import() methods should provide an overload which would return an IEnumerable&lt;T&gt;, a list of objects of the developers choice.\r<br />\nThus, a signature similar to this would be useful: IEnumerable&lt;T&gt; Excel.Import&lt;T&gt;(List&lt;ColumnMapping&gt; mappings) where T : class\r<br />\nType T would provide properties with names defined in mappings and thus an import from Excel would generate a collection of objects (POCO) in memory. Then you could filter any way you want and eventually store the data to a LightSwitch table.<br />\n",
+    "PostedDate": "2014-05-28T00:39:51.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

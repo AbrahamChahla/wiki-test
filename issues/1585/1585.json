@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "hi, i am using the excel import.\ni would like to make an auto action after ir finish the imports. \nIn my case, i import data, and then i must assing a relation to another table for each register.\nTo do this i must put a button to make the action manually.  I would like to auto throw the ejecution of a function after the import finish.\n\nthanks",
+    "LastUpdatedDate": "2014-06-10T03:29:23.633-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "officeintegration",
+    "ReportedDate": "2013-05-12T18:36:16.763-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "action after import",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 1585
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This is what I'm looking for also: \n```\nExcel.Import<T>(..., Action<bool, IVisualCollection<T>> OnCompleted)\r\n\r\nvoid OnCompleted(bool importResult, IVisualCollection<T> importedData)\n{ }\n```",
+      "PostedDate": "2014-06-10T03:29:23.633-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have detail grid which I have exported and then imported back to the grid and I receive error. Cannot find matching SubItem (see screenshot). \n\nDetail grid has 2 fields which are many to one relationship.\nFirst one I can choose entity to use and second one I can choose subentity of first one. subitems are filtered based on first entity.\n\nIs there way to solve this issue, I have tried everything possible I could think of.",
+    "LastUpdatedDate": "2013-03-05T02:11:49.427-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "officeintegration",
+    "ReportedDate": "2013-03-05T02:11:44.14-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Excel.Import Error Cannot find matching...",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1447
+  },
+  "FileAttachments": [
+    {
+      "FileId": 689,
+      "FileName": "importerror.PNG",
+      "DownloadUrl": ".\\689"
+    }
+  ],
+  "Comments": []
+}

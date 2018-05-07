@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "900325",
+    "ThreadId": "391958",
+    "Html": "\r\n<p>I see in the release notes&nbsp;for V1.03 this is supported, but I don't see how to do it in c#. Can someone point me in the right direction? I would like to import data without having to specify the range of valid data.</p>\r\n",
+    "PostedDate": "2012-08-16T20:43:26.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "900950",
+    "ThreadId": "391958",
+    "Html": "<p>Never mind. I found it in the docs.</p>",
+    "PostedDate": "2012-08-17T22:02:23.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1222068",
+    "ThreadId": "391958",
+    "Html": "How did you get it to work?<br />\n",
+    "PostedDate": "2014-03-12T13:17:29.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

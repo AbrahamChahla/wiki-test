@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1219809",
+    "ThreadId": "538129",
+    "Html": "Write data to specific Excel file.<br />\n<br />\nHello, I have a simple question, I think..<br />\n<br />\nHow do I write my data from &quot;fields&quot; to a specific excel file..<br />\n<br />\nfor Word I do: <br />\n<br />\nobject doc = Word.GenerateDocument(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + &quot;\\Lidmaatschapskaart.dotx&quot;, this.Ledens.SelectedItem, mapContent);<br />\n// Export het document naar Word.<br />\n<pre><code>        Word.Export(doc, &quot;Lidmaatschapskaart&quot;, 2, false, this.Ledens, mapContent);\n</code></pre>\n\nBut this doesn't work for Excel.<br />\n<br />\nhere's my code:<br />\n <br />\npartial void Printen_Execute()<br />\n<pre><code>    {\n        //Export a specific set of Book fields to a new workbook\n        var fields = new List&lt;String&gt; { &quot;Voornaam&quot;, &quot;Adres&quot; };\n\n        OfficeIntegration.Excel.Export(this.Ledens, fields);\n    }\n</code></pre>\n\nCan someone help me, please?<br />\n<br />\nMark<br />\n",
+    "PostedDate": "2014-03-06T02:59:31.65-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1219857",
+    "ThreadId": "538129",
+    "Html": "I just figured it out myself!\r<br />\n<br />\n OfficeIntegration.Excel.Export(this.Ledens, <a href=\"mailto:@&quot;C:\\test.xlsx&quot;,\" rel=\"nofollow\">@\"C:\\test.xlsx\",</a> &quot;Sheet1&quot;, &quot;C1&quot;);\r<br />\n<br />\nMark<br />\n",
+    "PostedDate": "2014-03-06T05:26:36.827-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2014-03-06T05:26:49.573-08:00"
+  }
+]

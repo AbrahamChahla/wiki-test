@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "984959",
+    "ThreadId": "429161",
+    "Html": "\r\n<p>Hello,</p>\r\n<p>I'm using the GenerateDocument method in Word and it is working fine, except when the controls are placed in the document header or footer.</p>\r\n<p>These controls are not being filled in these places, although they got filled when are placed in the body of the document.</p>\r\n<p>Is there any way to fill controls in the document header or footer?</p>\r\n<p>Thank you,</p>\r\n<p>Augusto</p>\r\n",
+    "PostedDate": "2013-01-10T06:04:50.23-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "985038",
+    "ThreadId": "429161",
+    "Html": "\r\n<p>&nbsp;</p>\r\n<p>Searching a little further, I found this post <a href=\"http://social.msdn.microsoft.com/forums/en-US/vsto/thread/622731fc-be0f-4b55-92a6-03b5e5df749b\">\r\nhttp://social.msdn.microsoft.com/forums/en-US/vsto/thread/622731fc-be0f-4b55-92a6-03b5e5df749b</a>&nbsp;on msdn explaining why this happens.</p>\r\n<p>According to the post and reviewing the codes Word.vb and WordHelper.vb, I think this can be fixed in the method SetContentControl, by getting all content controls in all document sections instead of getting only the controls in the Document object.</p>\r\n<p>I will be glad if I could help some how updating the code or doing anything else.</p>\r\n<p>Best Regards,</p>\r\n<p>Augusto</p>\r\n<div id=\"_mcePaste\" style=\"width:1px; height:1px; overflow:hidden; top:0px; left:-10000px\">\r\n&#65279;</div>\r\n",
+    "PostedDate": "2013-01-10T08:56:02.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

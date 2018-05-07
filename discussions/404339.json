@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "946054",
+    "ThreadId": "404339",
+    "Html": "\r\n<p>Can I&nbsp;format exported data somehow? I exported for example columns&nbsp;&quot;adress&quot;, &quot;prize&quot;, &quot;date&quot; from my Lightswitch apliaction (VS 2012).&nbsp;All columns are exported as&nbsp;text format. Can I change format data as\r\n it is being exported or&nbsp;fix aplication format of fileds (string, decimal, date) ? I need to have number format in Excel because of making analysis, additional calculation etc.</p>\r\n<p>Thank you</p>\r\n<p>Radka</p>\r\n",
+    "PostedDate": "2012-11-23T02:40:30.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "946077",
+    "ThreadId": "404339",
+    "Html": "\r\n<p>I do my exports to Excel via code in the server part</p>\r\n<p>I use this library&nbsp; http://epplus.codeplex.com/</p>\r\n<p>It is not compatible with Silverlight, but sending a command to the server part of your application, you can have the server export this to a real excel file, and send the data back to the client.</p>\r\n<p>For sending commands, you have to use the command table pattern</p>\r\n<p>see:&nbsp; http://blog.pragmaswitch.com/?p=332</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2012-11-23T03:42:49.097-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1292371",
+    "ThreadId": "404339",
+    "Html": "Any otherway to do it directlly in Lightswitch, I have this code:<br />\n<pre><code>     partial void New_Excel_Export_Execute()\n        {\n     \n            List&lt;string&gt; columns = new List&lt;string&gt;();\n            columns.Add(&quot;Customer_No_&quot;) ;\n            columns.Add(&quot;Hotel_Name&quot;);\n            columns.Add(&quot;Post_Code&quot;);\n            columns.Add(&quot;Hotel_City&quot;);\n            columns.Add(&quot;Country&quot;);\n            columns.Add(&quot;Hotel_Status&quot;);\n            columns.Add(&quot;Contract_Status_Code&quot;);\n            columns.Add(&quot;Chain_Code&quot;);\n            columns.Add(&quot;Brand_Name&quot;);\n            columns.Add(&quot;Brand_Code&quot;); \n            columns.Add(&quot;Brand_Name&quot;);\n            columns.Add(&quot;Electronic_Payment_Method&quot;);\n            columns.Add(&quot;Reason_Code&quot;);\n            columns.Add(&quot;Inkasso&quot;);\n            columns.Add(&quot;Balance__LCY_&quot;);\n            OfficeIntegration.Excel.Export(this.BalanceGreaterZero, columns);\n\n         } \n</code></pre>\n\n",
+    "PostedDate": "2014-08-22T02:37:59.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

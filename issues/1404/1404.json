@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "hi, i am trying the office automation, its really great for reporting to word and PDF.\ni probe some of the code, and can create report with text controls and tables populated from my DB.\n\nnow i am trying to put a text control inside a textbox  so i can move it freely in my word report.\ny insert the new textbox, and modify ( or insert) the textcontrol with the correspondig DB name but it doesnt update.\nAttach and example of word template.\nall the controls are updated, but not the text box\n\n\nthanks",
+    "LastUpdatedDate": "2013-02-14T13:22:20.55-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "officeintegration",
+    "ReportedDate": "2013-01-17T06:54:37.543-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "word text control in textbox",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1404
+  },
+  "FileAttachments": [
+    {
+      "FileId": 672,
+      "FileName": "Product Catalog.dotx",
+      "DownloadUrl": ".\\672"
+    }
+  ],
+  "Comments": []
+}

@@ -1,0 +1,564 @@
+<div class="wikidoc"><h1>Overview</h1>The Office Integration Pack for Microsoft LightSwitch is a LightSwitch Extension that developers can use to add Microsoft Office integration features to their LightSwitch projects. Using the Office Integration Pack developers can import/export from Microsoft Excel, import into Microsoft Word, associate a Word template with a LightSwitch application and export data to content controls in the document, send email, and create appointments. This document describes the methods included in the Office Integration Pack.<br />
+<h1>The Office Integration Pack Sample Application</h1>A sample application is available at <a href="http://officeintegration.codeplex.com/releases/87595/download/378876">http://officeintegration.codeplex.com/releases/87595/download/378876</a> that demonstrates how to use the Office Integration Pack. The comments in code are extensive and should give you a good feel for how most of the functionality works. There are many screens in the sample that demonstrate a variety of common uses of Excel, Word, and Outlook.<br /><br />The prerequisities for this sample are:<br />
+<ul><li>Visual Studio LightSwitch 2011 </li>
+<li>Office Integration Pack Extension </li>
+<li>Microsoft Office 2010 (Excel, Word, and Outlook) </li></ul>
+<br />To use the sample application, extract the contents of the ZIP and copy all the Word and Excel documents to your “My Documents” folder. Then double-click on the BookStoreApp.SLN file to open the sample in Visual Studio LightSwitch. Press F5 to compile and run.<br />
+<h1>Excel Integration Features</h1>The methods in the Office Integration Pack are grouped by the Microsoft Office application to which they apply. The features related to Microsoft Excel are found in the OfficeIntegration.Excel namespace. <br />
+<h2>Export</h2>Used to export a collection of items to a range in an Excel workbook. There are 12 overloads:<br /><br /><i><b>Export(Collection as IVisualCollection) as Object</b></i><br />This overload simply exports the Collection of items to Sheet1!A1 in a new workbook.
+<ul><li>Collection is the IVisualCollection of items that you want to export to the workbook.</li>
+<li>Example:</li></ul>
+<pre> Export(Me.Applicants) 
+</pre><br /><i><b>Export(Collection as IVisualCollection, ColumnNames As List(Of String)) as Object</b></i><br />This overload simply exports the Collection of items to Sheet1!A1 in a new workbook with the specified columns.
+<ul><li>Collection is the IVisualCollection of items that you want to export to the workbook.</li>
+<li>ColumnNames contains a list of strings specifying the names of the columns to export.</li>
+<li>Example:</li></ul>
+<pre>Dim names as New List(Of String)
+names.Add(&quot;Name&quot;)
+names.Add(&quot;Address&quot;)
+names.Add(&quot;City&quot;)
+Export(Me.Applicants, names) 
+</pre><br /><i><b>Export(Collection as IVisualCollection, ColumnNames As List(Of ColumnMapping)) as Object</b></i><br />This overload simply exports the Collection of items to Sheet1!A1 in a new workbook with the specified column mapping.
+<ul><li>Collection is the IVisualCollection of items that you want to export to the workbook.</li>
+<li>ColumnNames contains a list of ColumnMapping objects specifying the names of the columns to export.</li>
+<li>Example:</li></ul>
+<pre>Dim mappings as New List(Of OfficeIntegration.ColumnMapping)
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Name&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Address&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;City&quot;))
+Export(Me.Applicants, mappings) 
+</pre><br /><b><i> Export(Collection as IVisualCollection, Workbook as String, Worksheet as String, Range as String) as Object</i></b>
+<ul><li>Collection is the IVisualCollection of items that you want to export to the workbook.</li>
+<li>Workbook represents the full path of the workbook that you want to export to.</li>
+<li>Worksheet represents the name of the worksheet that you want to export to.</li>
+<li>Range represents either the range name or address of the cell that will be the top-left cell of the range. If the range name or address contains more than 1 cell, the first cell in the range is used.</li>
+<li>Examples: </li></ul>
+<pre>Export(Me.Applicants, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _
+     &quot;Sheet2&quot;, _
+     &quot;C5&quot;)
+Export(Me.Applicants, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _ 
+     &quot;Sheet2&quot;, _
+     &quot;DestinationRange&quot;)
+</pre><br /><b><i> Export(Collection as IVisualCollection, Workbook as String, Worksheet as String, Range as String, ColumnNames as List(Of String)) as Object</i></b>
+<ul><li>Collection is the IVisualCollection of items that you want to export to the workbook.</li>
+<li>Workbook represents the full path of the workbook that you want to export to.</li>
+<li>Worksheet represents the name of the worksheet that you want to export to.</li>
+<li>Range represents either the range name or address of the cell that will be the top-left cell of the range. If the range name or address contains more than 1 cell, the first cell in the range is used.</li>
+<li>ColumnNames is a list containing the names of the fields that should be exported.</li>
+<li>Example:</li></ul>
+<pre>Dim names as New List(Of String)
+names.Add(&quot;Name&quot;)
+names.Add(&quot;Address&quot;)
+names.Add(&quot;City&quot;)
+Export(Me.Applicants, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _
+     &quot;Sheet2&quot;, _
+     &quot;C5&quot;, _
+     names)
+</pre><br /><b><i> Export(Collection as IVisualCollection, Workbook as String, Range as String, ColumnNames as List(Of OfficeIntegration.ColumnMapping)) as Object</i></b>
+<ul><li>Collection is the IVisualCollection of items that you want to export to the workbook.</li>
+<li>Workbook represents the full path of the workbook that you want to export to.</li>
+<li>Worksheet represents the name of the worksheet that you want to export to.</li>
+<li>Range represents either the range name or address of the cell that will be the top-left cell of the range. If the range name or address contains more than 1 cell, the first cell in the range is used.</li>
+<li>ColumnNames is a list of ColumnMapping objects containing the names of the fields that should be exported.</li>
+<li>Example:</li></ul>
+<pre>Dim mappings as New List(Of OfficeIntegration.ColumnMapping)
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Name&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Address&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;City&quot;))
+Export(Me.Applicants, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _
+     &quot;Sheet2&quot;, _
+     &quot;C5&quot;, _
+     mappings)
+</pre><br /><i><b>Export(Collection as IEnumerable) as Object</b></i><br />This overload simply exports the Collection of items to Sheet1!A1 in a new workbook.
+<ul><li>Collection is a generic collection of items that you want to export to the workbook.</li>
+<li>Example:</li></ul>
+<pre>Dim results = From a In Me.Applicants
+     where a.Name.ToLower.Contains(&quot;s&quot;)
+     Select a.Name, a.Address, a.City
+Export(results) 
+</pre><br /><i><b>Export(Collection as IEnumerable, ColumnNames As List(Of String)) as Object</b></i><br />This overload simply exports the Collection of items to Sheet1!A1 in a new workbook with the specified columns.
+<ul><li>Collection is a generic collection of items that you want to export to the workbook.</li>
+<li>ColumnNames contains a list of strings specifying the names of the columns to export.</li>
+<li>Example:</li></ul>
+<pre>Dim results = From a In Me.Applicants
+     where a.Name.ToLower.Contains(&quot;s&quot;)
+Dim names as New List(Of String)
+names.Add(&quot;Name&quot;)
+names.Add(&quot;Address&quot;)
+names.Add(&quot;City&quot;)
+Export(results, names) 
+</pre><br /><i><b>Export(Collection as IEnumerable, ColumnNames As List(Of ColumnMapping)) as Object</b></i><br />This overload simply exports the Collection of items to Sheet1!A1 in a new workbook with the specified column mappings.
+<ul><li>Collection is a generic collection of items that you want to export to the workbook.</li>
+<li>ColumnNames contains a list of ColumnMapping objects specifying the names of the columns to export.</li>
+<li>Example:</li></ul>
+<pre>Dim results = From a In Me.Applicants
+     where a.Name.ToLower.Contains(&quot;s&quot;)
+Dim mappings as New List(Of OfficeIntegration.ColumnMapping)
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Name&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Address&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;City&quot;))
+Export(results, mappings) 
+</pre><br /><b><i> Export(Collection as IEnumerable, Workbook as String, Worksheet as String, Range as String) as Object</i></b>
+<ul><li>Collection is a generic collection of items that you want to export to the workbook.</li>
+<li>Workbook represents the full path of the workbook that you want to export to.</li>
+<li>Worksheet represents the name of the worksheet that you want to export to.</li>
+<li>Range represents either the range name or address of the cell that will be the top-left cell of the range. If the range name or address contains more than 1 cell, the first cell in the range is used.</li>
+<li>Examples: </li></ul>
+<pre>
+Dim results = From a In Me.Applicants
+     where a.Name.ToLower.Contains(&quot;s&quot;)
+Export(results, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _
+     &quot;Sheet2&quot;, _
+     &quot;C5&quot;)
+Export(results, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _ 
+     &quot;Sheet2&quot;, _
+     &quot;DestinationRange&quot;)
+</pre><br /><b><i> Export(Collection as IEnumerable, Workbook as String, Worksheet as String, Range as String, ColumnNames as List(Of String)) as Object</i></b>
+<ul><li>Collection is a generic collection of items that you want to export to the workbook.</li>
+<li>Workbook represents the full path of the workbook that you want to export to.</li>
+<li>Worksheet represents the name of the worksheet that you want to export to.</li>
+<li>Range represents either the range name or address of the cell that will be the top-left cell of the range. If the range name or address contains more than 1 cell, the first cell in the range is used.</li>
+<li>ColumnNames is a list containing the names of the fields that should be exported.</li>
+<li>Example:</li></ul>
+<pre>
+Dim results = From a In Me.Applicants
+     where a.Name.Contains(&quot;s&quot;)
+Dim names as New List(Of String)
+names.Add(&quot;Name&quot;)
+names.Add(&quot;Address&quot;)
+names.Add(&quot;City&quot;)
+Export(results, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _
+     &quot;Sheet2&quot;, _
+     &quot;C5&quot;, _
+     names)
+</pre><br /><b><i> Export(Collection as IEnumerable, Workbook as String, Range as String, ColumnNames as List(Of OfficeIntegration.ColumnMapping)) as Object</i></b>
+<ul><li>Collection is a generic collection of items that you want to export to the workbook.</li>
+<li>Workbook represents the full path of the workbook that you want to export to.</li>
+<li>Worksheet represents the name of the worksheet that you want to export to.</li>
+<li>Range represents either the range name or address of the cell that will be the top-left cell of the range. If the range name or address contains more than 1 cell, the first cell in the range is used.</li>
+<li>ColumnNames is a list of ColumnMapping objects containing the names of the fields that should be exported.</li>
+<li>Example:</li></ul>
+<pre>
+Dim results = From a In Me.Applicants
+     where a.Name.Contains(&quot;s&quot;)
+Dim mappings as New List(Of OfficeIntegration.ColumnMapping)
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Name&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Address&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;City&quot;))
+Export(results, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _
+     &quot;Sheet2&quot;, _
+     &quot;C5&quot;, _
+     mappings)
+</pre> 
+<h2>ExportEntityCollection</h2><i> These methods have been deprecated and may be removed upon future releases. Please use Word.Export() overloads. </i><br /><br />ExportEntityCollection performs the same way as the Export method except that ExportEntityCollection accepts an IEntityCollection object rather than an IVisualCollection. As with the Export method, there are four overloads:<br /><b><i> ExportEntityCollection(Collection as IEntityCollection) as Boolean </i></b><br />This overload simply exports the Collection of items to Sheet1!A1 in a new workbook.
+<ul><li>Collection is the IEntityCollection of items that you want to export to the workbook.</li>
+<li>Example:</li></ul>
+<pre> ExportEntityCollection(Me.Authors.SelectedItem.Books)
+</pre><br /><b><i> ExportEntityCollection(Collection as IEntityCollection, Workbook as String, Worksheet as String, Range as String) as Boolean </i></b>
+<ul><li>Collection is the IEntityCollection of items that you want to export to the workbook.</li>
+<li>Workbook represents the full path of the workbook that you want to export to.</li>
+<li>Worksheet represents the name of the worksheet that you want to export to.</li>
+<li>Range represents either the range name or address of the cell that will be the top-left cell of the range. If the range name or address contains more than 1 cell, the first cell in the range is used.</li>
+<li>Examples: </li></ul>
+<pre>ExportEntityCollection(Me.Applicants, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _
+     &quot;Sheet2&quot;, _
+     &quot;C5&quot;)
+ExportEntityCollection(Me.Applicants, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _ 
+     &quot;Sheet2&quot;, _
+     &quot;DestinationRange&quot;)
+</pre><br /><b><i> ExportEntityCollection(Collection as IEntityCollection, Workbook as String, Worksheet as String, Range as String, ColumnNames as List(Of String)) as Boolean </i></b>
+<ul><li>Collection is the IEntityCollection of items that you want to export to the workbook.</li>
+<li>Workbook represents the full path of the workbook that you want to export to.</li>
+<li>Worksheet represents the name of the worksheet that you want to export to.</li>
+<li>Range represents either the range name or address of the cell that will be the top-left cell of the range. If the range name or address contains more than 1 cell, the first cell in the range is used.</li>
+<li>ColumnNames is a list containing the names of the fields that should be exported.</li>
+<li>Example:</li></ul>
+<pre>Dim names as New List(Of String)
+names.Add(&quot;Name&quot;)
+names.Add(&quot;Address&quot;)
+names.Add(&quot;City&quot;)
+ExportEntityCollection(Me.Applicants, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _
+     &quot;Sheet2&quot;, _
+     &quot;C5&quot;, _
+     names)
+</pre><br /><b><i> ExportEntityCollection(Collection as IEntityCollection, Workbook as String, Range as String, ColumnNames as List(Of OfficeIntegration.ColumnMapping)) as Boolean </i></b>
+<ul><li>Collection is the IEntityCollection of items that you want to export to the workbook.</li>
+<li>Workbook represents the full path of the workbook that you want to export to.</li>
+<li>Worksheet represents the name of the worksheet that you want to export to.</li>
+<li>Range represents either the range name or address of the cell that will be the top-left cell of the range. If the range name or address contains more than 1 cell, the first cell in the range is used.</li>
+<li>ColumnNames is a list of ColumnMapping objects containing the names of the fields that should be exported.</li>
+<li>Example:</li></ul>
+<pre>Dim mappings as New List(Of OfficeIntegration.ColumnMapping)
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Name&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Address&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;City&quot;))
+ExportEntityCollection(Me.Applicants, _
+     &quot;C:\Users\SHansen\Applicants.xlsx&quot;, _
+     &quot;Sheet2&quot;, _
+     &quot;C5&quot;, _
+     mappings)
+</pre>
+<h2>GetExcel </h2>GetExcel returns an instance of Microsoft Excel.<br /><b><i> GetExcel() as Object </i></b>
+<ul><li>The returned Object is of type Excel.Application</li>
+<li>See example under the GetWorkbook method. </li></ul>
+<h2>GetWorkbook</h2>GetWorkbook returns an Excel workbook.<br /><b><i> GetWorkbook(Excel as Object, WorkbookPath as String) as Object </i></b>
+<ul><li>The returned Object is of type Excel.Workbook</li>
+<li>Example:</li></ul>
+<pre>Dim xl as Object
+xl = OfficeIntegration.Excel.GetExcel()
+If Not xl is Nothing Then
+	Dim wb as Object
+	wb = GetWorkbook(xl, &quot;c:\users\shansen\example.doc&quot;)
+	If Not wb is Nothing Then
+		‘ do something with the workbook here
+	End If
+	xl.Application.Visible = True
+End If
+</pre>
+<h2>Import</h2>Imports a range from an Excel workbook into LightSwitch. There are three overloads:<br /><b><i> Import(Collection as IVisualCollection) </i></b>
+<ul><li>Imports a range of data into the Collection</li>
+<li>Collection is the IVisualCollection that the data should be imported into.</li>
+<li>UI is displayed to allow the end-user to choose which workbook to import</li>
+<li>UI is displayed to allow the end-user to perform column mapping</li>
+<li>Assumes the data is located on the first worksheet in the workbook starting at cell A1.</li>
+<li>Example:</li></ul>
+<pre>Import(Me.Applicants)
+</pre><br /><b><i> Import(Collection as IVisualCollection, ColumnMappings As List(Of ColumnMapping)) </i></b>
+<ul><li>Imports a range of data into the Collection</li>
+<li>Collection is the IVisualCollection that the data should be imported into.</li>
+<li>ColumnMappings specifies the columns to import and the respective columns they should be mapped to in LightSwitch.</li>
+<li>UI is displayed to allow the end-user to choose which workbook to import</li>
+<li>Assumes the data is located on the first worksheet in the workbook starting at cell A1.</li>
+<li>Example:</li></ul>
+<pre>
+Dim mappings As New List(Of OfficeIntegration.ColumnMapping)
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;Name&quot;, &quot;Name&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;Address&quot;, &quot;Address&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;City&quot;, &quot;City&quot;))
+Import(Me.Applicants,mappings)
+</pre><br /><b><i> Import(Collection as IVisualCollection, Workbook as String, Worksheet as String, Range as String) </i></b>
+<ul><li>Imports a range of data into the Collection</li>
+<li>Collection is the IVisualCollection that the data should be imported into.</li>
+<li>Workbook is the full path to the workbook containing the data to import</li>
+<li>Worksheet is the name of the worksheet containing the data</li>
+<li>Range is the address or named range representing the top-left cell in the data range. If the range consists of multiple cells, the first cell is assumed to be the top-left cell in the range.</li>
+<li>UI is displayed to allow the end-user to perform column mapping</li>
+<li>Example:</li></ul>
+<pre>Import(Me.Applicants, _
+     &quot;c:\Users\SHansen\applicants.xlsx&quot;, _
+     &quot;Sheet1&quot;, _
+     &quot;B2&quot;) 
+Import(Me.Applicants, _
+     &quot;c:\Users\SHansen\applicants.xlsx&quot;, _
+     &quot;Sheet3&quot;, _
+     &quot;DataRange&quot;)
+</pre><br /><b><i> Import(Collection as IVisualCollection, Workbook as String, Worksheet as String, Range as String, ColumnMapping as List(Of OfficeIntegration.ColumnMapping)) </i></b>
+<ul><li>Imports a range of data into the Collection</li>
+<li>Collection is the IVisualCollection that the data should be imported into.</li>
+<li>Workbook is the full path to the workbook containing the data to import</li>
+<li>Worksheet is the name of the worksheet containing the data</li>
+<li>Range is the address or named range representing the top-left cell in the data range. If the range consists of multiple cells, the first cell is assumed to be the top-left cell in the range.</li>
+<li>ColumnMapping is a list of ColumnMapping objects containing the names of the fields that should be imported.</li>
+<li>Example:</li></ul>
+<pre>Dim mappings as New List(Of OfficeIntegration.ColumnMapping)
+mappings.Add( _
+     New OfficeIntegration.ColumnMapping( _
+     &quot;Applicant Name&quot;, _
+     &quot;Name&quot;))
+mappings.Add( _
+     New OfficeIntegration.ColumnMapping( _
+     &quot;Address&quot;, _
+     &quot;Address&quot;))
+mappings.Add( _
+     New OfficeIntegration.ColumnMapping( _
+     &quot;City&quot;, _
+     &quot;City&quot;))
+Import(Me.Applicants, _
+     &quot;c:\Users\SHansen\applicants.xlsx&quot;, _
+     &quot;Sheet1&quot;, _
+     &quot;B2&quot;, _
+     mappings)
+</pre>
+<h1>Outlook Integration Features</h1>The methods in the Office Integration Pack are grouped by the Microsoft Office application to which they apply. The features related to Microsoft Outlook are found in the OfficeIntegration.Outlook namespace. 
+<h2>CreateAppointment</h2>Create a new Outlook appointment item.<br /><b><i> CreateAppointment(Address as String, Subject as String, Body as String, Location as String, StartDateTime as Date, EndDateTime as Date) as Object </i></b>
+<h2>CreateEmail</h2>Create a new Outlook email item. There are two overloads:
+<ul><li>CreateEmail(Address as String, Subject as String, Body as String) as Object</li>
+<li>CreateEmail(Address as String, Subject as String, Items as IVisualCollection) as Object</li></ul>
+<h2>HtmlExport</h2>Creates an HTML table containing items from an IVisualCollection:
+<ul><li>HtmlExport(Items as IVisualCollection) as String</li>
+<li>HtmlExport(Items as IVisualCollection, ColumnNames as List(Of String)) as String</li></ul>
+<h2>HtmlExportEntityCollection</h2>Creates an HTML table containing items from an IEntityCollection:
+<ul><li>HtmlExportEntityCollection(Items as IEntityCollection) as String</li>
+<li>HtmlExportEntityCollection(Items as IEntityCollection, ColumnNames as List(Of String)) as String</li></ul>
+<h1>Word Integration Features</h1>The methods in the Office Integration Pack are grouped by the Microsoft Office application to which they apply. The features related to Microsoft Word are found in the OfficeIntegration.Word namespace. 
+<h2>Export</h2>The Export method exports a collection of items to a table in a Word document. Each Export overload now supports exporting of images. There are 15 overloads:<br /><b><i> Export(Collection as IVisualCollection, UseActiveDocument as Boolean) as Object </i></b>
+<ul><li>Use this overload to export data to a table in a new Word document.</li>
+<li>Returns an Object of type Word.Document</li>
+<li>Collection is the collection of items to export.</li>
+<li>If UseActiveDocument=True, then a table is added at the selection (cursor) of whatever document is currently active. If UseActiveDocument=False, then the table is added to a new document.</li>
+<li>Example:</li></ul>
+<pre>Export(Me.Applicants, True)
+</pre><br /><b><i> Export(Collection as IVisualCollection, BuildColumnHeadings As Boolean, ColumnNames As List(Of ColumnMapping), UseActiveDocument as Boolean) as Object </i></b>
+<ul><li>Use this overload to export data to a table in a new Word document.</li>
+<li>Returns an Object of type Word.Document</li>
+<li>Collection is the collection of items to export.</li>
+<li>If BuildColumnHeadings=True, then the header row of the table will be populated with data based on the name of the columns in ColumnNames</li>
+<li>ColumnNames is a list of ColumnMapping objects that specify the columns to export</li>
+<li>If UseActiveDocument=True, then a table is added at the selection (cursor) of whatever document is currently active. If UseActiveDocument=False, then the table is added to a new document.</li>
+<li>Example:</li></ul>
+<pre>
+Dim mappings As New List(Of OfficeIntegration.ColumnMapping)
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;, &quot;Name&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;, &quot;Address&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;, &quot;City&quot;))
+Export(Me.Applicants, True, mappings, False)
+</pre><br /><b><i> Export(Document as Object, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IVisualCollection) as Object </i></b>
+<ul><li>Use this overload to export data to an existing table in a Word document.</li>
+<li>Returns an Object of type Word.Document</li>
+<li>Document is an Object of type Word.Document</li>
+<li>BookmarkName is the name of a bookmark in the document that indicates which table to export to.</li>
+<li>StartRow is the row number that the first item will be exported to. This is useful if you do not want this method to build column headings because the table already contains pre-labeled column headings. You can use a StartRow of 2  with BuildColumnHeadings = false to preserve the existing column headings in the table and start exporting data only to row 2.</li>
+<li>BuildColumnHeadings is a flag indicating whether or not the method should output column heading to the table.</li>
+<li>Collection is the collection of items to export.</li>
+<li>Example:</li></ul>
+<pre>Dim word as Object
+word = OfficeIntegration.Word.GetWord()
+If Not word is Nothing Then
+	Dim doc as Object
+	doc = GetDocument(word, &quot;c:\users\shansen\example.doc&quot;)
+	If Not doc is Nothing Then
+		Export(doc, &quot;ApplicantTable&quot;, 1, True, Me.Applicants)
+	End If
+	Word.Application.Visible = True
+End If
+</pre><br /><b><i> Export(Document as Object, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IVisualCollection, ColumnNames as List(Of OfficeIntegration.ColumnMapping)) as Object </i></b>
+<ul><li>Same as above except you can limit which fields are exported using the ColumnNames parameter</li></ul>
+<b><i> Export(Document as Object, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IVisualCollection, ColumnNames as List(Of String)) as Object </i></b>
+<ul><li>Same as above except you can limit which fields are exported using the ColumnNames parameter</li></ul>
+<b><i> Export(DocumentPath as String, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IVisualCollection) as Object </i></b>
+<ul><li>Use this overload to export data to an existing table in a Word document.</li>
+<li>Returns an Object of type Word.Document</li>
+<li>DocumentPath is the full path to the desired document.</li>
+<li>BookmarkName is the name of a bookmark in the document that indicates which table to export to.</li>
+<li>StartRow is the row number that the first item will be exported to. This is useful if you do not want this method to build column headings because the table already contains pre-labeled column headings. You can use a StartRow of 2  with BuildColumnHeadings = false to preserve the existing column headings in the table and start exporting data only to row 2.</li>
+<li>BuildColumnHeadings is a flag indicating whether or not the method should output column heading to the table.</li>
+<li>Collection is the collection of items to export.</li>
+<li>Example:</li></ul>
+<pre>Export(&quot;c:\users\shansen\example.doc&quot;, _
+     &quot;ApplicantTable&quot;, _
+     1, _
+     True, _
+     Me.Applicants)
+</pre><br /><b><i> Export(DocumentPath as String, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IVisualCollection, ColumnNames as List(Of OfficeIntegration.ColumnMapping)) as Object </i></b>
+<ul><li>Same as above except you can limit which fields are exported using the ColumnNames parameter</li></ul>
+<b><i> Export(DocumentPath as String, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IVisualCollection, ColumnNames as List(Of String)) as Object </i></b>
+<ul><li>Same as above except you can limit which fields are exported using the ColumnNames parameter</li></ul>
+<b><i> Export(Collection as IEnumerable, UseActiveDocument as Boolean) as Object </i></b>
+<ul><li>Use this overload to export a generic collection of data to a table in a new Word document.</li>
+<li>Returns an Object of type Word.Document</li>
+<li>Collection is a generic collection of items to export.</li>
+<li>If UseActiveDocument=True, then a table is added at the selection (cursor) of whatever document is currently active. If UseActiveDocument=False, then the table is added to a new document.</li>
+<li>Example:</li></ul>
+<pre>
+Dim results From a In Me.Applicants
+     where a.Name.Contains(&quot;s&quot;)
+Export(results, True)
+</pre><br /><b><i> Export(Collection as IEnumerable, BuildColumnHeadings as Boolean, ColumnNames As List(Of ColumnMapping), UseActiveDocument as Boolean) as Object </i></b>
+<ul><li>Same as above except you can specify the columns to export.</li>
+<li>Collection is a generic collection of items to export.</li>
+<li>If BuildColumnHeadings=True, then the header row of the table will be populated with data based on the name of the columns in ColumnNames</li>
+<li>ColumnNames is a list of ColumnMapping objects that specify the columns to export</li>
+<li>If UseActiveDocument=True, then a table is added at the selection (cursor) of whatever document is currently active. If UseActiveDocument=False, then the table is added to a new document.</li>
+<li>Example:</li></ul>
+<pre>
+Dim results From a In Me.Applicants
+     where a.Name.Contains(&quot;s&quot;)
+Dim mappings As New List(Of OfficeIntegration.ColumnMapping)
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;, &quot;Name&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;, &quot;Address&quot;))
+mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;, &quot;City&quot;))
+Export(results, True, mappings, False)
+</pre><br /><b><i> Export(Collection as IEnumerable, BuildColumnHeadings as Boolean, ColumnNames As List(Of String), UseActiveDocument as Boolean) as Object </i></b>
+<ul><li>Same as above except you can specify the columns to export.</li>
+<li>Collection is a generic collection of items to export.</li>
+<li>If BuildColumnHeadings=True, then the header row of the table will be populated with data based on the name of the columns in ColumnNames</li>
+<li>ColumnNames contains a list of strings specifying the columns to export.</li>
+<li>If UseActiveDocument=True, then a table is added at the selection (cursor) of whatever document is currently active. If UseActiveDocument=False, then the table is added to a new document.</li>
+<li>Example:</li></ul>
+<pre>
+Dim results From a In Me.Applicants
+     where a.Name.Contains(&quot;s&quot;)
+Dim names as New List(Of String)
+names.Add(&quot;Name&quot;)
+names.Add(&quot;Address&quot;)
+names.Add(&quot;City&quot;)
+Export(results, True, names, True)
+</pre><br /><b><i> Export(Document as Object, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IEnumerable, ColumnNames as List(Of String)) as Object </i></b>
+<ul><li>Use this overload to export a generic collection of data to an existing table in a Word document.</li>
+<li>Returns an Object of type Word.Document</li>
+<li>Document is an Object of type Word.Document</li>
+<li>BookmarkName is the name of a bookmark in the document that indicates which table to export to.</li>
+<li>StartRow is the row number that the first item will be exported to. This is useful if you do not want this method to build column headings because the table already contains pre-labeled column headings. You can use a StartRow of 2  with BuildColumnHeadings = false to preserve the existing column headings in the table and start exporting data only to row 2.</li>
+<li>BuildColumnHeadings is a flag indicating whether or not the method should output column heading to the table.</li>
+<li>Collection is a generic collection of items to export.</li>
+<li>ColumnNames is a list of strings specifying the columns to export</li>
+<li>Example:</li></ul>
+<pre>Dim word as Object
+word = OfficeIntegration.Word.GetWord()
+If Not word is Nothing Then
+	Dim doc as Object
+	doc = GetDocument(word, &quot;c:\users\shansen\example.doc&quot;)
+	If Not doc is Nothing Then
+                Dim results = From a In Me.Applicants
+                     where a.Name.Contains(&quot;s&quot;)
+                Dim names as New List(Of String)
+                names.Add(&quot;Name&quot;)
+                names.Add(&quot;Address&quot;)
+                names.Add(&quot;City&quot;)
+		Export(doc, &quot;ApplicantTable&quot;, 1, True, results, names)
+	End If
+	Word.Application.Visible = True
+End If
+</pre><br /><b><i> Export(DocumentPath as String, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IEnumerable, ColumnNames as List(Of String)) as Object </i></b>
+<ul><li>Same as above except you can specify the document path.</li></ul>
+<b><i> Export(Document as Object, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IEnumerable, ColumnNames as List(Of ColumnMapping)) as Object </i></b>
+<ul><li>Use this overload to export a generic collection of data to an existing table in a Word document.</li>
+<li>Returns an Object of type Word.Document</li>
+<li>Document is an Object of type Word.Document.</li>
+<li>BookmarkName is the name of a bookmark in the document that indicates which table to export to.</li>
+<li>StartRow is the row number that the first item will be exported to. This is useful if you do not want this method to build column headings because the table already contains pre-labeled column headings. You can use a StartRow of 2  with BuildColumnHeadings = false to preserve the existing column headings in the table and start exporting data only to row 2.</li>
+<li>BuildColumnHeadings is a flag indicating whether or not the method should output column heading to the table.</li>
+<li>Collection is a generic collection of items to export.</li>
+<li>ColumnNames is a list of ColumnMapping objects used to specify the columns to export</li>
+<li>Example:</li></ul>
+<pre>Dim word as Object
+word = OfficeIntegration.Word.GetWord()
+If Not word is Nothing Then
+	Dim doc as Object
+        doc = GetDocument(word, &quot;c:\users\shansen\example.doc&quot;)
+        If Not doc is Nothing Then
+	        Dim results = From a In Me.Applicants
+                   where a.Name.Contains(&quot;s&quot;)
+                Dim mappings as New List(Of OfficeIntegration.ColumnMapping)
+                mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Name&quot;))
+                mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;Address&quot;))
+                mappings.Add(New OfficeIntegration.ColumnMapping(&quot;&quot;,&quot;City&quot;))
+	        Export(doc, &quot;ApplicantTable&quot;, 1, True, results, mappings)
+        End If
+	Word.Application.Visible = True
+End If
+</pre><br /><b><i> Export(DocumentPath as String, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IEnumerable, ColumnNames as List(Of ColumnMapping)) as Object </i></b>
+<ul><li>Same as above except you can specify the document path.</li></ul>
+<h2>ExportEntityCollection </h2><i> These methods have been deprecated and may be removed upon future releases. Please use Word.Export() overloads. </i><br /><br />Use ExportEntityCollection to export a collection of items to a table in a Word document. There are seven overloads. The overloads are identical to the overloads for the Export method with one difference. ExportEntityCollection accepts an IEntityCollection rather than the IVisualCollection supported by the Export method. <br /><b><i> ExportEntityCollection(Collection as IEntityCollection, UseActiveDocument as Boolean) as Object </i></b>
+<ul><li>Use this overload to export data to a table in a new Word document.</li>
+<li>Returns an Object of type Word.Document</li>
+<li>Collection is the collection of items to export.</li>
+<li>If UseActiveDocument=True, then a table is added at the selection (cursor) of whatever document is currently active. If UseActiveDocument=False, then the table is added to a new document.</li>
+<li>Example:</li></ul>
+<pre>ExportEntityCollection(Me.Authors.SelectedItem.Books, True)
+</pre><br /><b><i> ExportEntityCollection(Document as Object, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IEntityCollection) as Object </i></b>
+<ul><li>Use this overload to export data to an existing table in a Word document.</li>
+<li>Returns an Object of type Word.Document</li>
+<li>Document is an Object of type Word.Document</li>
+<li>BookmarkName is the name of a bookmark in the document that indicates which table to export to.</li>
+<li>StartRow is the row number that the first item will be exported to. This is useful if you do not want this method to build column headings because the table already contains pre-labeled column headings. You can use a StartRow of 2  with BuildColumnHeadings = false to preserve the existing column headings in the table and start exporting data only to row 2.</li>
+<li>BuildColumnHeadings is a flag indicating whether or not the method should output column heading to the table.</li>
+<li>Collection is the collection of items to export.</li>
+<li>Example:</li></ul>
+<pre>Dim word as Object
+word = OfficeIntegration.Word.GetWord()
+If Not word is Nothing Then
+     Dim doc as Object
+     doc = GetDocument(word, &quot;c:\users\shansen\example.doc&quot;)
+     If Not doc is Nothing Then
+          ExportEntityCollection(doc, _
+               &quot;ApplicantTable&quot;, _
+               1, _
+               True, _
+               Me.Applicants)
+     End If
+     Word.Application.Visible = True
+End If
+</pre><br /><b><i> ExportEntityCollection(Document as Object, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IEntityCollection, ColumnNames as List(Of OfficeIntegration.ColumnMapping)) as Object </i></b>
+<ul><li>Same as above except you can limit which fields are exported using the ColumnNames parameter</li></ul>
+<b><i> ExportEntityCollection(Document as Object, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IEntityCollection, ColumnNames as List(Of String)) as Object </i></b>
+<ul><li>Same as above except you can limit which fields are exported using the ColumnNames parameter</li></ul>
+<b><i> ExportEntityCollection(DocumentPath as String, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IEntityCollection) as Object </i></b>
+<ul><li>Use this overload to export data to an existing table in a Word document.</li>
+<li>Returns an Object of type Word.Document</li>
+<li>DocumentPath is the full path to the desired document.</li>
+<li>BookmarkName is the name of a bookmark in the document that indicates which table to export to.</li>
+<li>StartRow is the row number that the first item will be exported to. This is useful if you do not want this method to build column headings because the table already contains pre-labeled column headings. You can use a StartRow of 2  with BuildColumnHeadings = false to preserve the existing column headings in the table and start exporting data only to row 2.</li>
+<li>BuildColumnHeadings is a flag indicating whether or not the method should output column heading to the table.</li>
+<li>Collection is the collection of items to export.</li>
+<li>Example:</li></ul>
+<pre>ExportEntityCollection(&quot;c:\users\shansen\example.doc&quot;, _
+     &quot;ApplicantTable&quot;, _
+     1, _
+     True, _
+     Me.Applicants)
+</pre><br /><b><i> ExportEntityCollection(DocumentPath as String, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IEntityCollection, ColumnNames as List(Of OfficeIntegration.ColumnMapping)) as Object </i></b>
+<ul><li>Same as above except you can limit which fields are exported using the ColumnNames parameter</li></ul>
+<b><i> ExportEntityCollection(DocumentPath as String, BookmarkName as String, StartRow as Integer, BuildColumnHeadings as Boolean, Collection as IVisualCollection, ColumnNames as List(Of String)) as Object </i></b>
+<ul><li>Same as above except you can limit which fields are exported using the ColumnNames parameter</li></ul>
+<h2>GenerateDocument</h2>GenerateDocument allows you to associate a Word template containing content controls with a LightSwitch project and then map entity fields to the content controls.<br /><b><i> GenerateDocument(Template as String, Item as IEntityObject, ColumnMappings as List(Of OfficeIntegration.ColumnMapping)) as Object </i></b>
+<ul><li>Returns an Object of type Word.Document</li>
+<li>Template is a string representing the full path to the document which will be used as a template</li>
+<li>Item is the IEntityObject whose data will be used to populate content controls in the template</li>
+<li>ColumnMappings is a list of column mappings that indicate how to map fields in the IEntityObject to content controls in the template. Content Controls in the document are located by title.</li>
+<li>Example:</li></ul>
+<pre>Dim mappings as New List(Of OfficeIntegration.ColumnMapping)
+mappings.Add( _
+     New OfficeIntegration.ColumnMapping(&quot;Applicant&quot;,&quot;Name&quot;))
+mappings.Add( _
+     New OfficeIntegration.ColumnMapping(&quot;Address&quot;,&quot;Address&quot;))
+mappings.Add( _
+     New OfficeIntegration.ColumnMapping(&quot;City&quot;,&quot;City&quot;))
+Dim doc as Object
+Dim sPath as String
+sPath = &quot;c:\users\shansen\documents\letter1.docx&quot;
+doc = GenerateDocument(sPath, _
+       Me.Applicants.SelectedItem, _
+       mappings)
+</pre>
+<h2>GetDocument  </h2>You can use GetDocument to open a Word document and return a Word Document object reference to the associated document.<br /><b><i> GetDocument(Word as Object, DocumentPath as String) as Object </i></b>
+<ul><li>Returns an Object of type Word.Document</li></ul>
+<h2>GetWord </h2>GetWord is a method to conveniently obtain a reference to Microsoft Word<br /><b><i> GetWord() as Object </i></b>
+<ul><li>Returns an Object of type Word.Application</li></ul>
+<h2>SaveAsPdf</h2>SaveAsPdf saves a Word document as PDF, optionally showing the PDF document after it is created<br /><b><i> SaveAsPDF(Document as Object, FullName as String, ShowPDF as Boolean) </i></b>
+<ul><li>Document is an Object of type Word.Document</li>
+<li>FullName represents the file path where the PDF document will be saved</li>
+<li>ShowPDF is a flag indicating whether to display the PDF document after it is created or not.</li>
+<li>Example (building on the GenerateDocument example from above)</li></ul>
+<pre>Dim mappings as New List(Of OfficeIntegration.ColumnMapping)
+mappings.Add( _
+     New OfficeIntegration.ColumnMapping(&quot;Applicant&quot;,&quot;Name&quot;))
+mappings.Add( _
+     New OfficeIntegration.ColumnMapping(&quot;Address&quot;,&quot;Address&quot;))
+mappings.Add( _
+     New OfficeIntegration.ColumnMapping(&quot;City&quot;,&quot;City&quot;))
+Dim doc as Object
+Dim sPath as String
+sPath = &quot;c:\users\shansen\documents\letter1.docx&quot;
+doc = GenerateDocument(sPath, _
+  Me.Applicants.SelectedItem, _
+  mappings)
+Dim sPDFPath as String
+sPDFPath = &quot;c:\users\shansen\documents\OfferLetter.pdf&quot;
+SaveAsPDF(doc, sPDFPath, True)
+</pre>
+<h1>SMTP Integration Features</h1>This class is only applicable to code running on the server tier. To use the methods in the OfficeIntegration.Smtp namespace, call them from data oriented event handlers within the ApplicationDataService class.
+<h2>CreateAppointment </h2>Create and send an appointment using the iCal format.<br /><b><i> CreateAppointment(SendFrom as String, SendTo as String, Subject as String, Body as String, Location as String, StartTime as Date, EndTime as Date, MsgID as String, Sequence as Integer, IsCancelled as Boolean, Server as SmtpServer) as Boolean </i></b>
+<h2>CreateEmail </h2>Create and send an email. There are two overloads:<br /><b><i> CreateEmail(SendFrom as String, SendTo as String, Subject as String, Body as String, Server as SmtpServer) as Boolean </i></b><br /><b><i> CreateEmail(SendFrom as String, SendTo as String, Subject as String, Body as IEnumerable, Server as SmtpServer) as Boolean </i></b>
+<h1>OfficeIntegration.SmtpServer</h1>SmtpServer is a class representing the connection details associated with an SMTP server. This class is required for the methods exposed in OfficeIntegration.Smtp. This class contains the following properties:<br /><b><i> SmtpServer – The name of the SMTP server. </i></b><br /><b><i> SmtpPort – The port used by the SMTP server. </i></b><br /><b><i> SmtpUserId – The name of the account to use when logging on to the SMTP server. </i></b><br /><b><i> SmtpPassword – The password to use when authenticating to the SMTP server. </i></b><br /></div><div class="ClearBoth"></div>

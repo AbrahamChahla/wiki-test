@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "919858",
+    "ThreadId": "397476",
+    "Html": "\r\n<p>Is there a file size limit for Excel Imports? I have an application that attempts to import a file and fails. When I cut the number of rows in half (300) it works. When it fails the error indicates that it can't open the excel file. using Excel 2010 format\r\n (.xlsx).</p>\r\n",
+    "PostedDate": "2012-09-30T18:25:24.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925299",
+    "ThreadId": "397476",
+    "Html": "<p>There is no intentional size limit within the Office Integration Pack. Have you noticed if there is a specific item that might be tripping it up?&nbsp;</p>",
+    "PostedDate": "2012-10-11T08:08:42.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "925485",
+    "ThreadId": "397476",
+    "Html": "<p>There doesn't appear to be a specific item that it is choking on. I can split the spreadsheet up into smaller chunks and it appears to work for each chunk so it doesn't appear to be data dependent. It is a HUGE spreadsheet (746 rows by 450 columns). I only import a fraction of the columns, but the file is 1.1G. The behavior is similar but different in debug vs published app. The published app chokes on a much smaller number of rows. I was only able to import around 150 rows at a time when running the published app. It appears to be timing out on something.</p>",
+    "PostedDate": "2012-10-11T12:56:08.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

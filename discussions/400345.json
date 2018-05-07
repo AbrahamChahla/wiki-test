@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "930586",
+    "ThreadId": "400345",
+    "Html": "\r\n<p>Greetings,</p>\r\n<p>I am looking for something that will work with Web Applications for printing and reporting.&nbsp; Before downloading the tool and installing it, I was wondering if the Office Integration Pack has that flexibility?</p>\r\n<p>Thanks for a wonderful tool...sure hope it works with WAs.</p>\r\n<p>Thanks again,</p>\r\n<p>Heather</p>\r\n",
+    "PostedDate": "2012-10-22T10:01:31.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "947027",
+    "ThreadId": "400345",
+    "Html": "\r\n<p>Hi Heather,</p>\r\n<p>The Office Integration Pack only works for&nbsp;Lightswitch projects that are deployed as a desktop client.</p>\r\n<p>Thanks,</p>\r\n<p>Steve</p>\r\n",
+    "PostedDate": "2012-11-26T06:35:35.327-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

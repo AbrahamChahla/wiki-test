@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1098078",
+    "ThreadId": "458811",
+    "Html": "Hi, i have a problem when i try to export to a Word doc:<br />\n<br />\n<img src=\"http://puu.sh/4ymzK.png\" alt=\"Image\" /><br />\n<br />\n&quot;The directory name is invalid&quot;<br />\n<br />\n<img src=\"http://puu.sh/4ymB7.png\" alt=\"Image\" /><br />\n<br />\nAnyone know this problem and how to fix it?, i need some help from you :) , thanks for advance, have a good day.<br />\n<br />\nPS: I have VS 2013 RC<br />\n",
+    "PostedDate": "2013-09-23T09:09:09.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1140807",
+    "ThreadId": "458811",
+    "Html": "Are you resolved this problem?\r<br />\nCan you share your solution?\r<br />\n<br />\nI think, that it was because .Execute code in HTML5 Client written on JS...<br />\n",
+    "PostedDate": "2013-12-23T02:49:09.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

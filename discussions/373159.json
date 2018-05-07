@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "872999",
+    "ThreadId": "373159",
+    "Html": "\r\n<p>Word.Export support image export, will Excel.Export one day able to do that too?</p>\r\n",
+    "PostedDate": "2012-07-18T03:42:47.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "894633",
+    "ThreadId": "373159",
+    "Html": "<p>We haven't come up with a good way to support this in a robust manner. Could you tell me about your scenario?</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks,</p>\r\n<p>Steve</p>",
+    "PostedDate": "2012-08-02T05:42:23.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "896334",
+    "ThreadId": "373159",
+    "Html": "<p>Thanks Steve, my scenario is quite simple: I have no problem generating Word reports with images, but people keep asking me whether the same can be done with Excel (Excel is a much better tool when you have a lot of calculation to do).</p>",
+    "PostedDate": "2012-08-06T23:17:15.19-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

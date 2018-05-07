@@ -1,0 +1,122 @@
+[
+  {
+    "Id": "955444",
+    "ThreadId": "406610",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I am currently buidling a LS application which requires a simple one page report.</p>\r\n<p>I have built this using your tool and it is working well. The only problem I am having is that I just want to output the PDF. Is there any way I can do all of the generating in memory so that the user is not presented with the word document?</p>\r\n<p>The end goal is to just have the pdf print automatically when the user clicks &quot;Generate Report&quot;. But I will tackle this end goal once I have managed to supress the word document.</p>\r\n<p>Here is my curent method for testing:</p>\r\n<p>note: I am taking temporary copies of the template file as the user may need to run the report multiple times before closing the original instance. If there is a better way of doing this with your tool, please let me know. Thanks</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><div style=\"color:black; background-color:white\"><pre>        <span style=\"color:blue\">Private</span> <span style=\"color:blue\">Sub</span> GenerateReport_Execute()\r\n\r\n            <span style=\"color:blue\">Dim</span> MyDocs = ManufacturingData.DocumentTemplateFolder\r\n            <span style=\"color:blue\">Dim</span> WordFile = MyDocs & <span style=\"color:#a31515\">&quot;OTM.docx&quot;</span>\r\n            <span style=\"color:blue\">Dim</span> TempWordFile <span style=\"color:blue\">As</span> FileInfo\r\n\r\n            TempWordFile = ManufacturingData.CreateTimeStampCopy(WordFile, <span style=\"color:#a31515\">&quot;OTM&quot;</span>)\r\n\r\n            <span style=\"color:blue\">If</span> TempWordFile <span style=\"color:blue\">IsNot</span> <span style=\"color:blue\">Nothing</span> <span style=\"color:blue\">AndAlso</span> <span style=\"color:blue\">Me</span>.SearchItems.SelectedItem <span style=\"color:blue\">IsNot</span> <span style=\"color:blue\">Nothing</span> <span style=\"color:blue\">Then</span>\r\n                <span style=\"color:blue\">If</span> File.Exists(WordFile) <span style=\"color:blue\">Then</span>\r\n                    <span style=\"color:green\">'Map the content control tag names in the word document to the entity field names</span>\r\n                    <span style=\"color:blue\">Dim</span> custFields <span style=\"color:blue\">As</span> <span style=\"color:blue\">New</span> List(Of OfficeIntegration.ColumnMapping)\r\n                    custFields.Add(<span style=\"color:blue\">New</span> OfficeIntegration.ColumnMapping(<span style=\"color:#a31515\">&quot;PartNumber&quot;</span>, <span style=\"color:#a31515\">&quot;ItemNumber&quot;</span>))\r\n\r\n                    <span style=\"color:blue\">If</span> SearchItems.SelectedItem.ToolingInvestigationImage <span style=\"color:blue\">IsNot</span> <span style=\"color:blue\">Nothing</span> <span style=\"color:blue\">Then</span>    <span style=\"color:green\">'Optional parameter</span>\r\n                        custFields.Add(<span style=\"color:blue\">New</span> OfficeIntegration.ColumnMapping(<span style=\"color:#a31515\">&quot;Image1&quot;</span>, <span style=\"color:#a31515\">&quot;ToolingInvestigationImage&quot;</span>))\r\n                    <span style=\"color:blue\">End</span> <span style=\"color:blue\">If</span>\r\n\r\n                    <span style=\"color:blue\">Dim</span> doc <span style=\"color:blue\">As</span> <span style=\"color:blue\">Object</span> = OfficeIntegration.Word.GenerateDocument(TempWordFile.FullName, <span style=\"color:blue\">Me</span>.SearchItems.SelectedItem, custFields)\r\n\r\n                    <span style=\"color:blue\">Dim</span> pdfDocName <span style=\"color:blue\">As</span> <span style=\"color:blue\">String</span> = Replace(TempWordFile.FullName, <span style=\"color:#a31515\">&quot;.docx&quot;</span>, <span style=\"color:#a31515\">&quot;.pdf&quot;</span>)\r\n                    OfficeIntegration.Word.SaveAsPDF(doc, pdfDocName, <span style=\"color:blue\">True</span>)\r\n                <span style=\"color:blue\">Else</span>\r\n                    ShowMessageBox(WordFile)\r\n                <span style=\"color:blue\">End</span> <span style=\"color:blue\">If</span>\r\n            <span style=\"color:blue\">End</span> <span style=\"color:blue\">If</span>\r\n        <span style=\"color:blue\">End</span> <span style=\"color:blue\">Sub</span>\r\n\r\n</pre>\r\n</div>\r\n</pre>\r\n</div>\r\n",
+    "PostedDate": "2012-12-13T00:19:53.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1014687",
+    "ThreadId": "406610",
+    "Html": "Hi,\r<br />\n<br />\nJust wondering if anyone from the OfficeIntegration team have a reply with regards to NOT opening the Word document.\r<br />\n<br />\nIn my particular case I have very thick users who keep thinking they need to save the Word document, even though I am automatically opening up the PDF created with SavePDF method.\r<br />\n<br />\nAny feedback would be appreciated.\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-03-13T09:35:49.37-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034676",
+    "ThreadId": "406610",
+    "Html": "Hello,\r<br />\nI have the same problem!\r<br />\nDid you find a solution?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2013-04-23T09:46:11.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1034849",
+    "ThreadId": "406610",
+    "Html": "Using the above code as a starting point, add the lines beneath the generatedocument method. Note that there'll still be  momentary &quot;flash&quot; of Word.<br />\n<pre><code>                Dim doc As Object = OfficeIntegration.Word.GenerateDocument(TempWordFile.FullName, Me.SearchItems.SelectedItem, custFields)\n                Dim wordApp = OfficeIntegration.Word.GetWord\n                wordApp.visible = False\n\n'and then to quit Word without saving--otherwise you're left with pesky Winword.exe still running\n               \n                wordApp.quit(False)</code></pre>\n\n",
+    "PostedDate": "2013-04-23T16:56:27.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1060466",
+    "ThreadId": "406610",
+    "Html": "The following does not work for me. Word is visible and while the doc is close the application does not quit.<br />\n<pre><code>dynamic word = OfficeIntegration.Word.GetWord();\n            if (word != null)\n            {\n                word.Application.Visible = false;\n                \n                List&lt;OfficeIntegration.ColumnMapping&gt; custFields = new List&lt;OfficeIntegration.ColumnMapping&gt;();\n                //mapping\n\n                dynamic doc = OfficeIntegration.Word.GenerateDocument(WordFile, this.VentesPro.SelectedItem, custFields);\n\n                if (doc != null)\n                {\n                    //CODE \n                    doc.Close(false);\n                }\n\n                word.Application.Quit(false);\n            }</code></pre>\n\nDid anyone make it quit?\r<br />\nTks.<br />\n",
+    "PostedDate": "2013-06-24T09:25:59.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1061133",
+    "ThreadId": "406610",
+    "Html": "I'm not a C# guy because brackets and semi-colons give me heahaches and eye strain ;) ... <br />\nbut try moving the GetWord and word.Application.Visible = false code so that it follows GenerateDocument:<br />\n<br />\n<br />\n``              <br />\n<pre><code>            dynamic doc = OfficeIntegration.Word.GenerateDocument(WordFile, this.VentesPro.SelectedItem, custFields);\n            dynamic word = OfficeIntegration.Word.GetWord();\n             word.Application.Visible = false;\n            if (doc != null)\n            {\n                //CODE \n                doc.Close(false);\n            }\n\n            word.Application.Quit(false);\n        }`\n</code></pre>\n\n```<br />\n",
+    "PostedDate": "2013-06-25T16:39:06.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1061414",
+    "ThreadId": "406610",
+    "Html": "It did not work :-(<br />\n",
+    "PostedDate": "2013-06-26T06:20:16.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1061527",
+    "ThreadId": "406610",
+    "Html": "Bummer.  The following VB code I just tested successfully<br />\n<pre><code>    Private Sub TestForfm1236Method_Execute()\n        ' Write your code here.\n        Dim wordFile As Object = New Object\n        Dim myDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)\n        wordFile = myDocs &amp; &quot;\\TestTemplateFolder\\TestWordTemplate.docx&quot;\n\n        Dim custFields As New List(Of OfficeIntegration.ColumnMapping)\n        custFields.Add(New OfficeIntegration.ColumnMapping(&quot;Own&quot;, &quot;Owner&quot;))\n\n        Dim doc As Object = OfficeIntegration.Word.GenerateDocument(wordFile, Me.Visit, custFields)\n        Dim word1 = OfficeIntegration.Word.GetWord\n        word1.visible = False\n        doc.saveas(myDocs &amp; &quot;\\TestTemplateFolder\\&quot; &amp; &quot;NewTemplateCreated&quot;)\n        doc.close(False)\n       ' ShowMessageBox(&quot;Check if Word is still running&quot;)\n        word1.quit(False)\n\n    End Sub</code></pre>\n\n",
+    "PostedDate": "2013-06-26T09:22:25.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1061529",
+    "ThreadId": "406610",
+    "Html": "I don't know why mine did not work but in the meantime I ended up giving up office integration pack and using interop directly (as I had other issues as well).<br />\n",
+    "PostedDate": "2013-06-26T09:25:01.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1062378",
+    "ThreadId": "406610",
+    "Html": "My interop code is very similar to office integration pack however mine takes ages to run while the pack is quite quick. Any idea why?<br />\n",
+    "PostedDate": "2013-06-28T02:57:10.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1062505",
+    "ThreadId": "406610",
+    "Html": "My experience is similar to yours.  Don't know why such a noticeable difference in performance. It's why I'm now looking into transitioning into using Open XML to create Word documents. Office Integration Pack is very good at what it does, but its limitations become apparent when creating more complicated Word documents. <br />\n",
+    "PostedDate": "2013-06-28T08:30:40.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1062508",
+    "ThreadId": "406610",
+    "Html": "I'm just using it to fill in a word Template so I managed to make it quick just using a Dictionary&lt;String,String&gt; and the below kind of code:<br />\n<pre><code>//....... code ......\ndynamic wordApp = AutomationFactory.CreateObject(&quot;Word.Application&quot;);\ndynamic nvDoc = wordApp.Documents.Open(templateFile, ref missing, ref missing, ref missing);\n\n//....... code ......\n\nnvDoc.ExportAsFixedFormat(factureFile, 17, true, 0, missing, missing, missing, missing, missing, missing, missing, false, true, missing, missing);\n\n//....... code ......\nprivate static void PopulateContentControls(dynamic doc, Dictionary&lt;String, String&gt; mappings)\n{\n            foreach(var sr in doc.StoryRanges)\n                foreach (var cc in sr.ContentControls)\n                 cc.Range.Text = mappings[cc.Title];\n        }</code></pre>\n\n",
+    "PostedDate": "2013-06-28T08:34:33.017-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1065508",
+    "ThreadId": "406610",
+    "Html": "<strong>JBeit wrote:</strong><br />\n<blockquote>\nBummer.  The following VB code I just tested successfully<br />\n<pre><code>    Private Sub TestForfm1236Method_Execute()\n        ' Write your code here.\n        Dim wordFile As Object = New Object\n        Dim myDocs = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)\n        wordFile = myDocs &amp; &quot;\\TestTemplateFolder\\TestWordTemplate.docx&quot;\n\n        Dim custFields As New List(Of OfficeIntegration.ColumnMapping)\n        custFields.Add(New OfficeIntegration.ColumnMapping(&quot;Own&quot;, &quot;Owner&quot;))\n\n        Dim doc As Object = OfficeIntegration.Word.GenerateDocument(wordFile, Me.Visit, custFields)\n        Dim word1 = OfficeIntegration.Word.GetWord\n        word1.visible = False\n        doc.saveas(myDocs &amp; &quot;\\TestTemplateFolder\\&quot; &amp; &quot;NewTemplateCreated&quot;)\n        doc.close(False)\n       ' ShowMessageBox(&quot;Check if Word is still running&quot;)\n        word1.quit(False)\n\n    End Sub\n</code></pre>\n\n</blockquote>\nHi JBeit,\r<br />\n<br />\nI just tried to use the doc.saveas method but before I even debug I get the following error: <br />\n<pre><code>&gt; 'object' does not contain a definition for 'saveas' and no extension method 'saveas' accepting a first argument of type 'object' could be found (are you missing a using directive or an assembly reference?)</code></pre>\n\nThe doc.saveas method seems like an ideal solution but clearly isn't supported. How did you manage to get it working correctly? (I assume by creating your own override/extension method?)\r<br />\n<br />\n<br />\nThanks in advance,\r<br />\n<br />\nAlex.<br />\n",
+    "PostedDate": "2013-07-08T04:01:38.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1065811",
+    "ThreadId": "406610",
+    "Html": "Hi Alex,\r<br />\n<br />\nNo extension or override involved. I just cut and pasted that exact code into my Lightswitch vb project and it works fine. The GenerateDocument function returns a Word Document object. So I'm just calling Word's Document.SaveAs method via late binding. I'm not a C# guy and can't really help you other than to suggest that you should be using the dynamic type instead of object. There is an example of this earlier in this thread. Here's a relevant quote from Microsoft on the dynamic type:<br />\n<blockquote>\nThe dynamic type enables the operations in which it occurs to bypass compile-time type checking. Instead, these operations are resolved at run time. The dynamic type simplifies access to COM APIs such as the Office Automation APIs, and also to dynamic APIs such as IronPython libraries, and to the HTML Document Object Model (DOM).<br />\n</blockquote>\n<a href=\"http://msdn.microsoft.com/en-us/library/dd264741.aspx\" rel=\"nofollow\">dynamic (C# Reference)</a><br />\n",
+    "PostedDate": "2013-07-08T14:39:03.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1219477",
+    "ThreadId": "406610",
+    "Html": "Have any of u guys has taken an actual look at the code?<br />\nIt's quite simple to tweak it... the only thing that keeps me from doing that  it's any posible updates... <br />\nbut seeing as the last commited patch was back on 2012 i wonder if this is still being maintained...<br />\ni'll try uploading a patch, meanwhile u can try downloading the code and patching it yourself...<br />\nthe part u should be looking for it's in the word file...<br />\nthe method looks like this:<br />\n<pre><code>  Public Function GenerateDocument(Template As String, Item As IEntityObject, ColumnMappings As List(Of ColumnMapping)) As Object\n        Dim doc As Object = Nothing\n        Dim wordProxy As New WordHelper()\n\n        wordProxy.CreateWord()\n        wordProxy.OpenDocument(Template)\n        PopulateContentControls(ColumnMappings, Item, wordProxy)\n        doc = wordProxy.Document\n        wordProxy.ShowDocument() &lt;--- this is the line displaying the word application\n\n        GenerateDocument = doc\n    End Function</code></pre>\n\nfrom here you can:<br />\n1) comment the line<br />\n2) create a new SilentGenerateDocument function<br />\n3) change the PopulateContentControls function to be public ( u can do everything else right now )<br />\n<br />\ni really don't want to change the  function signature as that would break existing client code...<br />\n<br />\nWhich option do you like the best?<br />\n",
+    "PostedDate": "2014-03-05T06:50:28.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

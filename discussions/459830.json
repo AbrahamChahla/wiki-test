@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1101356",
+    "ThreadId": "459830",
+    "Html": "I would like to circumvent the 1000 row OData Limitation in LightSwitch by looping through a spreadsheet 900 rows at a time using the Range import method:\r<br />\n<br />\nExcel.Import(this.book, this.Application.ExcelImportWorkbook, &quot;Sheet1&quot;, &quot;A1:C4&quot;)\r<br />\n<br />\nHowever, I don't see how I can determine the size last range, and how I can see when there is no more data in the spreadsheet.<br />\n",
+    "PostedDate": "2013-10-01T08:31:18.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

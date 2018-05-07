@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "956000",
+    "ThreadId": "406753",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I am trying to generate a Word document in Lightswitch 2012, and am having problems with the column mappings.</p>\r\n<p>The Entity object on my screen is &quot;Invoice&quot;, and any field that is part of the entity maps without any problem - eg InvoiceDate</p>\r\n<p>But any field which is derived through a relationship does not get exported. I have tried using both the object notation</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>Invoice.SalesOrder.Project.Customer.Name\n</pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>and the name of the control on the actual screen</p>\r\n<pre>Invoice_SalesOrder_Project_Customer_Name\n</pre>\r\n<p>But neither of the above works. An example of the full mapping code is below.</p>\r\n<pre>InvoiceFields.Add(<span style=\"color:blue\">new</span> OfficeIntegration.ColumnMapping(<span style=\"color:#a31515\">&quot;CustomerName&quot;</span>, <span style=\"color:#a31515\">&quot;Invoice.SalesOrder.Project.Customer.Name&quot;</span>));\nInvoiceFields.Add(<span style=\"color:blue\">new</span> OfficeIntegration.ColumnMapping(<span style=\"color:#a31515\">&quot;Address1&quot;</span>, <span style=\"color:#a31515\">&quot;Invoice_SalesOrder_Project_Customer_Address1&quot;</span>));\nInvoiceFields.Add(<span style=\"color:blue\">new</span> OfficeIntegration.ColumnMapping(<span style=\"color:#a31515\">&quot;InvoiceDate&quot;</span>, <span style=\"color:#a31515\">&quot;InvoiceDate&quot;</span>));\n</pre>\r\n<p>Any help would be greatly appreciated. Thanks</p>\r\n",
+    "PostedDate": "2012-12-14T02:09:35.633-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "956017",
+    "ThreadId": "406753",
+    "Html": "\r\n<p>UPDATE: A reply found on Lightswitch forum implies that traversing entity relationships is not possible. The simplest approach is to create a single view with all the data to be exported in the view. Full details can be found\r\n<a href=\"http://social.msdn.microsoft.com/Forums/en-US/lightswitch/thread/76946928-9760-4546-91c3-8106a86b46b8\" target=\"_blank\">\r\nhere</a>.</p>\r\n",
+    "PostedDate": "2012-12-14T03:08:18.803-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

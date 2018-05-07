@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Was not able to load the book store application into VS 2013. \"The selected project was created by an older version of this application and cannot be opened.\", click OK and it stops offering no conversion/updating.\n\n\"... A sample application is available at http://officeintegration.codeplex.com/releases/87595/download/378876 ...\"",
+    "LastUpdatedDate": "2015-04-29T21:04:27.793-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "officeintegration",
+    "ReportedDate": "2015-03-08T17:48:52.63-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Could not load sample book store application",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 1938
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

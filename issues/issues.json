@@ -1,0 +1,46 @@
+[
+  {
+    "Id": 1237,
+    "Title": "Allow a template (*.dotx) to be used with GenerateDocument."
+  },
+  {
+    "Id": 1280,
+    "Title": "Extension takes forever to export large table as Excel"
+  },
+  {
+    "Id": 1396,
+    "Title": "delete plz, my mistake"
+  },
+  {
+    "Id": 1404,
+    "Title": "word text control in textbox"
+  },
+  {
+    "Id": 1447,
+    "Title": "Excel.Import Error Cannot find matching..."
+  },
+  {
+    "Id": 1573,
+    "Title": "PLEASE WEB SUPPORT :("
+  },
+  {
+    "Id": 1580,
+    "Title": "GenerateDocument with more tables"
+  },
+  {
+    "Id": 1585,
+    "Title": "action after import"
+  },
+  {
+    "Id": 1788,
+    "Title": "Add an Excel.Import() method to return POCO objects"
+  },
+  {
+    "Id": 1899,
+    "Title": "Import Excel error in Web Client"
+  },
+  {
+    "Id": 1938,
+    "Title": "Could not load sample book store application"
+  }
+]

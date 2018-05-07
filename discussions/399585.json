@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "927366",
+    "ThreadId": "399585",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>i tried this extension with the samples and it works fine with excel and outlook, But when i use the 'Create Simple Word Doc' sample, i get an ComException-Error.</p>\r\n<p>Any hints?</p>\r\n<p>Regards</p>\r\n<p>Thomas</p>\r\n",
+    "PostedDate": "2012-10-16T06:38:42.18-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

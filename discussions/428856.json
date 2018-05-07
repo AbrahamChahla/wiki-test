@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "984004",
+    "ThreadId": "428856",
+    "Html": "\r\n<p>How to check data while importing Excel using office integration pack?</p>\r\n<p>I have made one choice list....for blood group</p>\r\n<p>In database i m using integer data type ..everything is going fine.....</p>\r\n<p>but if I import any excel having blood group field values like A&#43;, O-...</p>\r\n<p>so it gives error &quot;cannot convert string to int16&quot;</p>\r\n<p>please help me for implement this in columnmapping or in any?</p>\r\n",
+    "PostedDate": "2013-01-08T01:28:32.487-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
